@@ -2,10 +2,22 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Test Page</title>
-    <link rel="stylesheet" href="stylesheet.css">
+    <title>クエリパラメータ表示</title>
 </head>
 <body>
-    <h1>test</h1>
+    <h1>クエリパラメータの値</h1>
+    <p>Guild ID: <span id="guildId">取得中...</span></p>
+    <p>Role ID: <span id="roleId">取得中...</span></p>
+
+    <script>
+        // URLSearchParamsオブジェクトを使用してクエリパラメータを取得
+        const params = new URLSearchParams(window.location.search);
+        const guildId = params.get('guild_id');
+        const roleId = params.get('role_id');
+
+        // 取得した値をHTML内の該当箇所に挿入
+        document.getElementById('guildId').textContent = guildId ? guildId : '未指定';
+        document.getElementById('roleId').textContent = roleId ? roleId : '未指定';
+    </script>
 </body>
 </html>
